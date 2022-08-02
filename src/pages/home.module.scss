@@ -1,1 +1,24 @@
-// TODO
+.content{
+  cursor: pointer;
+
+  .title{
+    color: var(--Heading);
+    font-size: 1.75rem;
+    font-weight: bold;
+    
+  }
+  
+  & + .content {
+   margin-top: 3rem;
+  }
+}
+
+.buttonLoading{
+  background-color: transparent;
+  border: 0;
+  color: var(--Highlight);
+  margin-top: 4rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+

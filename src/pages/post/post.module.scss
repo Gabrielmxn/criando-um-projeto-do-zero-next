@@ -1,1 +1,28 @@
-// TODO
+
+.banner{
+  width:100%;
+}
+
+.container{
+ 
+  .title{
+    margin-top: 5rem;
+    color: var(--Heading);
+    font-size: 3rem;
+    font-weight: 700;
+    
+  }
+}
+
+.containerText{
+  margin-top: 4rem;
+  p{
+    margin-top: 1rem;
+    line-height: 2rem;
+    padding: 0.5rem 0;
+    color: var(--Body);
+  }
+}
+
+
+
