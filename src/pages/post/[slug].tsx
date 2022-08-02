@@ -11,6 +11,7 @@ import PrismicDom from 'prismic-dom'
 import { useEffect, useState } from "react";
 import ptBR from "date-fns/locale/pt-BR";
 import { useRouter } from "next/router";
+import Head from 'next/head';
 import { getPrismicClient } from '../../services/prismic';
 import commonStyles from '../../styles/common.module.scss';
 import styles from './post.module.scss';
@@ -69,7 +70,6 @@ export default function Post({post}: PostProps ) {
     ...post,
     first_publication_date: format(new Date(post.first_publication_date), 'd LLL u', {locale: ptBR}),
   }
-  console.log(newPost)
   setPublicPost(newPost);
   
 
@@ -92,6 +92,10 @@ export default function Post({post}: PostProps ) {
 
  
     return(
+      <>
+      <Head>
+        <title>Post | {publicPost.data.title}</title>
+      </Head>
       <main>
           <img
             className={styles.banner} 
@@ -129,6 +133,7 @@ export default function Post({post}: PostProps ) {
           })}
         
       </main>
+      </>
     )
   
   
@@ -140,7 +145,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     accessToken: process.env.PRISMIC_ACCESS_TOKEN
   });
   const posts = await prismic.getByType('posts');
-  console.log(posts);
   const pageStatic = posts.results.map(post => {
     return {
       params:{

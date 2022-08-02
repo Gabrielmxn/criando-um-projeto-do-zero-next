@@ -7,11 +7,12 @@ import { GetStaticProps,  } from 'next';
 import { useEffect, useState } from 'react';
 import Link from 'next/link'
 import { format } from 'date-fns';
+import Head from 'next/head';
 import { getPrismicClient } from '../services/prismic';
 import commonStyles from '../styles/common.module.scss';
 import styles from './home.module.scss';
 
-;
+
 
 interface Post {
   uid?: string;
@@ -34,7 +35,6 @@ interface HomeProps {
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export default function Home({postsPagination} : HomeProps) {
-  console.log(postsPagination)
   const [postResults, setPostResults] = useState<Post[]>([]);
   const [nextPage, setNextPage] = useState('');
   const {next_page, results} = postsPagination;
@@ -69,31 +69,36 @@ export default function Home({postsPagination} : HomeProps) {
     });
   }
   return(
-    <main className={commonStyles.container}>
-      {postResults.map(post => {
-        return(
-          <Link key={post.uid} href={`/post/${post.uid}`}>
-          <section className={styles.content} key={post.uid}>
-            <h2 className={commonStyles.title}>{post.data.title}</h2>
-            <p className={commonStyles.subtitle}>{post.data.subtitle}</p>
-            <div className={commonStyles.infoContainer}>
-              <div className={commonStyles.info}>
-                <FiCalendar/>
-                <span>{post.first_publication_date}</span>
+    <>
+    <Head>
+      <title>Home</title>
+    </Head>
+      <main className={commonStyles.container}>
+        {postResults.map(post => {
+          return(
+            <Link key={post.uid} href={`/post/${post.uid}`}>
+            <section className={styles.content} key={post.uid}>
+              <h2 className={commonStyles.title}>{post.data.title}</h2>
+              <p className={commonStyles.subtitle}>{post.data.subtitle}</p>
+              <div className={commonStyles.infoContainer}>
+                <div className={commonStyles.info}>
+                  <FiCalendar/>
+                  <span>{post.first_publication_date}</span>
+                </div>
+                <div className={commonStyles.info}>
+                  <FiUser/>
+                  <span>{post.data.author}</span>
+                </div>
+              
               </div>
-              <div className={commonStyles.info}>
-                <FiUser/>
-                <span>{post.data.author}</span>
-              </div>
-             
-            </div>
-          </section> 
-          </Link>
-        )
-      })}
+            </section> 
+            </Link>
+          )
+        })}
 
-      {nextPage ? (<button type="button" className={styles.buttonLoading} onClick={()=> {carregar()}}>Carregar mais posts</button>) : ''}
-    </main>
+        {nextPage ? (<button type="button" className={styles.buttonLoading} onClick={()=> {carregar()}}>Carregar mais posts</button>) : ''}
+      </main>
+    </>
   )
 }
 
