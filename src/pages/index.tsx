@@ -97,6 +97,7 @@ export default function Home({postsPagination} : HomeProps) {
         })}
 
         {nextPage ? (<button type="button" className={styles.buttonLoading} onClick={()=> {carregar()}}>Carregar mais posts</button>) : ''}
+        <button type="button" className={styles.modoPreview}>Sair do modo Preview</button>
       </main>
     </>
   )
@@ -108,8 +109,14 @@ export const getStaticProps: GetStaticProps = async () => {
       accessToken: process.env.PRISMIC_ACCESS_TOKEN
   });
   const postsPagination = await prismic.getByType('posts', {
-    pageSize: 1
+    pageSize: 1,
+    orderings: {
+      field: 'document.first_publication_date',
+      direction: 'desc'
+    },
   })
+
+
 
  
   return{
