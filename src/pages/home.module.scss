@@ -11,6 +11,12 @@
   & + .content {
    margin-top: 3rem;
   }
+
+  &:last-child{
+    margin-bottom: 3rem;
+  }
+    
+  
 }
 
 .buttonLoading{
@@ -18,9 +24,18 @@
   border: 0;
   color: var(--Highlight);
   margin-top: 4rem;
-  margin-bottom: 2rem;
   font-size: 1.125rem;
   font-weight: 600;
 
 }
 
+.modoPreview{
+  width: 100%;
+  margin-top: 5.5rem;
+  height: 3.625rem;
+  border-radius: 4px;
+  background-color: var(--Heading);
+  border: 0;
+  color: var(--Background);
+  font-weight: 500;
+}
