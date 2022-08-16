@@ -31,3 +31,96 @@
 
 
 
+.containerForm{
+  max-width: 700px;
+  background-color: #232326;
+  border-radius: 4px;
+  position: relative;
+  
+  &::after{
+    content: '';
+    width: 0;
+    height: 0;
+    left: -8px;
+    top: 10px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #2a2a2e;
+    position: absolute;
+  }
+}
+.buttonOption{
+  margin-bottom: 0;
+  background-color: #2a2a2e;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 4px 4px 0 0;
+ 
+}
+.buttonOption.active{
+  background-color: #232326;
+}
+.form{
+  padding: 0.75rem 0.75rem 0.5rem 0.75rem;
+}
+.containerButtonsOptions{
+  background-color: #2a2a2e;
+  padding: 0.5rem 0 0 0.75rem;
+  display: flex;
+  gap: 1rem;
+  border-radius: 4px 4px 0 0;
+}
+.textarea{
+  background-color: #2a2a2e;
+  overflow: none;
+  height: 100px;
+  width: 100%;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.rodape{
+  border-top: 1px solid #2a2a2e;
+  
+}
+
+.sign{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.75rem 0.75rem 0.75rem;
+
+  button {
+    background-color: #0f85f9;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+}
+
+.footerPages{
+  display: flex;
+  justify-content: space-between;
+  align-items:flex-end;
+  margin: 3rem 0 5rem 0;
+
+}
+.pages h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+  color: var(--Heading);
+  
+}
+.pages{
+  width: 100%;
+
+  &:last-child{
+    text-align: right;
+  }
+ 
+}
+.pages a {
+  text-align: right;
+  color: var(--Highlight);
+  font-size: 1rem;
+}

@@ -11,6 +11,7 @@ import Head from 'next/head';
 import { getPrismicClient } from '../services/prismic';
 import commonStyles from '../styles/common.module.scss';
 import styles from './home.module.scss';
+import { ButtonModoPreview } from "../components/ButtonModoPreview";
 
 
 
@@ -97,7 +98,7 @@ export default function Home({postsPagination} : HomeProps) {
         })}
 
         {nextPage ? (<button type="button" className={styles.buttonLoading} onClick={()=> {carregar()}}>Carregar mais posts</button>) : ''}
-        <button type="button" className={styles.modoPreview}>Sair do modo Preview</button>
+        <ButtonModoPreview/>
       </main>
     </>
   )
